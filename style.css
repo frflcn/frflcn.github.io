@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+}
+
+p, h1, h2, h3, h4{
+    font-family: cursive;
+}
+
+p{
+    background-color: rgb(99, 99, 99);
+    margin: 0;
+    padding: 10px;
+    color: white;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.header, .download{
+    background-color: rgb(185, 0, 0);
+    padding: 10px;
+    margin: 0;
+    color: black;
+}
+
+.problem{
+    border-bottom: black;
+    border-bottom-width: 5px;
+}
+
+a{
+    color: black;
+}
+
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1,h2,h3, h4{ 
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+
+}
+
+
+h1, h2, h3{
+    text-align: center;
+}
