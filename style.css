@@ -1,10 +1,8 @@
 body{
     margin: 0;
-}
-
-p, h1, h2, h3, h4{
     font-family: cursive;
 }
+
 
 p{
     background-color: rgb(99, 99, 99);
@@ -15,6 +13,19 @@ p{
     padding-top: 20px;
     text-align: center;
 }
+td{
+    font-weight: bold;
+    padding: 15px;
+}
+
+.table{
+    background-color: rgb(185, 0, 0);
+    padding: 10px;
+    margin: 0;
+    color: black;
+}
+
+
 
 .header, .download{
     background-color: rgb(185, 0, 0);
@@ -46,6 +57,3 @@ h1,h2,h3, h4{
 }
 
 
-h1, h2, h3{
-    text-align: center;
-}
