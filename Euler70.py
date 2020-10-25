@@ -55,9 +55,9 @@ def are_permutations(num1, num2):
 least_num = 0
 least_psi = 0
 least_ratio = 5
-time.clock()
+time.process_time()
 
-for x in range(1,10000001):
+for x in range(2,10000001):
 	psi = find_psi(x)
 	#if x % 100 == 0:	
 	#	input("Press enter")
@@ -65,8 +65,8 @@ for x in range(1,10000001):
 	if are_permutations(psi, x):
 	#	list_of_permutations.append([psi, x])
 		if x / psi < least_ratio:
-			print("The newest least ratio: The psi is: " + str(psi) + "	The num is:" + str(x) + "	Time since start: " + str(time.clock()))
+			print("\nThe newest least ratio:\nThe psi is: " + str(psi) + "	The num is: " + str(x) + "	The ratio is: " + str(x/psi) + "	Time since start: " + str(time.process_time()) + "\n")
 			least_ratio = x / psi
 		else:
-			print("The psi is: " + str(psi) + "	The num is:" + str(x) + "	Time since start: " + str(time.clock()))
+			print("The psi is: " + str(psi) + "	The num is:" + str(x) + "	The ratio is: " + str(x/psi) + " 	Time since start: " + str(time.process_time()))
 			

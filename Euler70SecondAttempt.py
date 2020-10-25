@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 import matplotlib.pyplot as plt
 import numpy as np
+import time
+time.process_time()
+time.perf_counter()
 
 #--------CALCULATE PRIMES--------------------------------------
 
@@ -36,7 +39,7 @@ def calculate_psi(x):
 	factors_left = x
 	factors = []
 	
-	for y in range(int(x*0.06645797)+20000):
+	for y in range(int(x*0.06645797)+20000): #(x*0.06645797) + 20000 is an upper bound to the number of primes that exist from 2 to x, (Designed for numbers up to 10,000,000)
 		if x % primes[y] == 0:
 			while factors_left % primes[y] == 0:
 				factors_left = factors_left // primes[y]
@@ -157,7 +160,7 @@ def calculate_psi(x):
 
 
 	if len(factors) >= 9:
-		#Calculate Octs
+		#Calculate Nons
 		nons = 0
 		for y in range(len(factors)-8):
 			for z in range(y+1,len(factors)-7):
@@ -168,7 +171,7 @@ def calculate_psi(x):
 								for e in range(d+1, len(factors)-2):
 									for f in range(e+1,len(factors)-1):
 										for g in range(f+1,len(factors)):
-											multiple = factors[f]*factors[e]*factors[d]*factors[c]*factors[b]*factors[a]*factors[y]*factors[z]
+											multiple = factors[g]*factors[f]*factors[e]*factors[d]*factors[c]*factors[b]*factors[a]*factors[y]*factors[z]
 											nons = nons + (x // multiple) - 1
 		psi = psi - nons
 	else:
@@ -214,10 +217,10 @@ for num in range(2,calculate_through):
 			least_ratio = num / psi
 			least_num = num
 			least_psi = psi
-			print("The least ratio is: " + str(least_ratio) + "	The num is: " + str(least_num) + "	The psi is: " + str(least_psi))
+			print("The least ratio is: " + str(least_ratio) + "	The num is: " + str(least_num) + "	The psi is: " + str(least_psi) + "	Time: " + str(time.process_time()) + " seconds")
 		else:
-			print("Num: " + str(num) + "	Psi: " + str(psi) + "	Factors: " + str(factors) + "	The least num so far is: " + str(least_num))
+			print("Num: " + str(num) + "	Psi: " + str(psi) + "	Factors: " + str(factors) + "	Num w/ least ratio so far: " + str(least_num) + "	Time: " + str(time.process_time()) + " seconds")
 	#if num % 100 == 0:
 	#	print("Num: " + str(num) + "	Psi: " + str(psi))
 
-print("The least ratio is: " + str(least_ratio) + "	The num is: " + str(least_num) + "	The psi is: " + str(least_psi))
+print("The least ratio is: " + str(least_ratio) + "	The num is: " + str(least_num) + "	The psi is: " + str(least_psi) + "	Time: " + str(time.process_time()) + " seconds")

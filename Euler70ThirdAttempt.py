@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 import time
+time.process_time()
+print("Calculating Primes...")
+print("Time: " + str(time.process_time()) + " seconds")
 
-print(time.process_time())
 
 #--------CALCULATE PRIMES--------------------------------------
 
@@ -30,9 +32,13 @@ for x in range(2, calculate_through_prime):
 
 #-----Function For Finding the Prime Factors of numbers 0 - 10000000
 
+
 list_of_factors = [[] for x in range(calculate_through)]
 
 def find_factors(list_of_primes, list_of_factors):
+
+	print("\nCalculating Prime Factors of Numbers 0-10,000,000...")
+	print("Time: " + str(time.process_time()) + " seconds")
 
 	for x in list_of_primes:
 		#print(x)
@@ -217,6 +223,10 @@ list_of_factors = find_factors(primes, list_of_factors)
 
 
 #Loop through number 2-10000000 to find the ratio n/psi(n)
+
+print("\nCalculating Psi, Permutations and Ratios for numbers 2-10,000,000...")
+print("Time: " + str(time.process_time()) + " seconds")
+
 for num in range(2,calculate_through):
 	
 	#Calculate psi(n)
@@ -234,5 +244,5 @@ for num in range(2,calculate_through):
 			#print("Num: " + str(num) + "	Psi: " + str(psi) + "	Factors: " + str(factors) + "	The least num so far is: " + str(least_num))
 
 
-print("The least ratio is: " + str(least_ratio) + "	The num is: " + str(least_num) + "	The psi is: " + str(least_psi))
-print(time.process_time())
+print("\nThe least ratio is: " + str(least_ratio) + "	The num is: " + str(least_num) + "	The psi is: " + str(least_psi) + "	With factors: " + str(list_of_factors[least_num]))
+print("Time: " + str(time.process_time()))

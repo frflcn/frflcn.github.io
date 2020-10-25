@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <h1>Euler 70</h1>
+    <h2>First Attempt</h2>
+    <p>My first attempt at this problem was pretty pathetic. To calculate φ(n) I went through every number x up to n, to see if x was coprime with n; to check that I went through every number y up to x, to see if x was a factor of y; if it was, then I checked if it was also a factor of n. If it was then n and x are coprime. 
+        I'm no computer scientist but it looks like this solution has a computational complexity of about O(n<sup>3</sup>). Which is why it will take hundreds of millenia to solve in this way.
+    </p>
+    <h2>Second Attempt</h2>
+    <p>Here is where I start getting smart. I realized that faster than counting the number of coprimes, was a method to calculate the number of coprimes from the list of prime factors of n.
+        It's a little bit complicated, and even I have to remind myself of how it works everytime. 
+    </p>
+    <p>
+        It goes like this. Suppose has n has prime factors p<sub>1</sub>, p<sub>2</sub>...p<sub>m</sub>, where m is the number of prime factors that n has. Take n and subtract one from it because n is not coprime with itself. Let's call this new number φ' because it's φ in the making. If you were then to write out a list of all of the multiples up to but not including n, for each of the prime factors of n. <!--You would get something like this-->You would realize two things: first that these are all of the numbers that aren't coprime with n, 
+        and second, the number of multiples in each list is n divided by p<sub>x</sub> minus one. So we just need to subtract the count of all these numbers right? Well not so fast because a couple numbers appear in multiple lists. So we don't want to double count them. Let's do it anyways. How do you calculate the size of these lists? Well it's easy, for each list just take n, divide by its prime factor, then subtract one because n isn't in this list. Subtract the size of each of these
+        lists from φ' and you get φ''. But wait! We double counted a couple numbers as not coprime...how many? Well take every combination of 2 prime factors, and make a list of all the multiples of the product of the prime factors. Like this... This is all of the numbers that we double counted...and some of them triple counted, so we want to add them back in. We do the same thing we did before except instead of 
+        dividing by the prime factor, we divide by the product of the prime factors and again subtract one. This time we add all of these back into the lists.
+        But once again, what about all the numbers we triple counted, and quadruple counted and so on? Well we continue this pattern of finding all the combination of 3...4...5...6 prime factors all the way the up to number of prime factors that n has, writing down the lists then calculating the size of them and alternating adding and subtracting them into φ'...φ''...φ'''. Why does this work well, it has to 
+        do with Pascal's Triangle. If you realize that Pascal's triangle has to do with combinatorics, which is what we've been implementing in our strategy. We can look at the Pascal's triangle and see that, the rows represent the numbers with that many common factors with n, and the columns represent which iteration we are on. If you look, if you alternate adding, then subtracting the numbers in a row, it will 
+        ALWAYS come out be zero. We skip the first row and first column. Now each row comes out to be negative one. The number we wanted all along. It seems alot more complicated than it needs to be. But this speeds up the calculation tremendously. From 600 millenia to 17 hours. It's now an O(n<sup>2</sup>) computation.
+
+    </p>  
+    <h2>Third Attempt</h2>  
+    <p>Seventeen hours is a long time. Especially when Project Euler says it may take a long time develop good code. BUT EVERY problem should be able to be solved by a reasonably fast computer in under a minute. Not to mention I tried to run the program and those damn automatic updates. LOL, I realized there was a faster way anyways.
+        I realized that the same method that is used to determine prime numbers with Eratosthenes Sieve (Explanation here) can be used to find the prime factors of each number. To speed up the process. Before I had a list of the primes and checked each prime up to the square root the number to see if it was factor. Then I realized I don't need to check. The program already knows which numbers the primes are a factor of...all the multiples!
+    Such a simple solution. So just loop through the multiples of all the primes and assign that prime as a factor. Now it's practically O(n). Finishes in just over 2 minutes and voila. I then coded the same project in C++ and it finished in under a minute.</p>
+    <p>Once I got on the forums. They had some clever tricks that get's it down to less than a 3 seconds. Some tricks I didn't even think of. Well actually I was thinking in that direction but I couldn't come to any conclusions. And it's time for me to go to bed.</p>
+</body>
+</html>
